@@ -9,7 +9,7 @@ export const personal = {
   github: 'https://github.com/HuuNghia2807',
   github2: 'https://github.com/naming404',
   portfolio: 'https://huunghia2807.github.io/portfolio',
-  avatar: '/personal.jpg',
+  avatar: './personal.jpg',
   summary: 'Frontend Developer with 4+ years of experience building high-performance web applications with Vue.js, Nuxt.js, React, and TypeScript. Improved Lighthouse scores by 73%, reduced production bugs by 40%, and optimized API usage by 60%. Strong in SSR/SSG and performance optimization. Actively expanding into Backend and DevOps to build scalable end-to-end systems.',
 }
 

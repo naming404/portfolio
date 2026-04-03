@@ -26,7 +26,7 @@
 
       <!-- Download CV -->
       <a
-        href="/Nguyen_Huu_Nghia_Middle_Frontend_Vuejs.pdf"
+        href="./Nguyen_Huu_Nghia_Middle_Frontend_Vuejs.pdf"
         download
         class="btn btn-primary btn-cv desktop-only"
       >
@@ -75,7 +75,7 @@
         {{ link.label }}
       </a>
       <a
-        href="/Nguyen_Huu_Nghia_Middle_Frontend_Vuejs.pdf"
+        href="./Nguyen_Huu_Nghia_Middle_Frontend_Vuejs.pdf"
         download
         class="btn btn-primary"
         style="margin-top: 8px; width: 100%; justify-content: center"
