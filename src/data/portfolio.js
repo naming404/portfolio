@@ -1,6 +1,6 @@
 export const personal = {
   name: 'Nguyen Huu Nghia',
-  role: 'Middle Frontend Developer',
+  role: 'Senior Frontend Developer',
   tagline: 'Crafting high-performance web experiences with Vue.js, Nuxt.js & TypeScript',
   email: 'nhn280700@gmail.com',
   phone: '(+84) 859 255277',
@@ -10,11 +10,11 @@ export const personal = {
   github2: 'https://github.com/naming404',
   portfolio: 'https://huunghia2807.github.io/portfolio',
   avatar: './personal.jpg',
-  summary: 'Frontend Developer with 4+ years of experience building high-performance web applications with Vue.js, Nuxt.js, React, and TypeScript. Improved Lighthouse scores by 73%, reduced production bugs by 40%, and optimized API usage by 60%. Strong in SSR/SSG and performance optimization. Actively expanding into Backend and DevOps to build scalable end-to-end systems.',
+  summary: 'Senior Frontend Developer with 4+ years of experience building high-performance web applications with Vue.js, Nuxt.js, React, and TypeScript. Improved Lighthouse scores by 73%, reduced production bugs by 40%, and optimized API usage by 60%. Strong in SSR/SSG and performance optimization. Actively expanding into Backend and DevOps to build scalable end-to-end systems.',
 }
 
 export const stats = [
-  { value: '4', label: 'Years of experience' },
+  { value: '4+', label: 'Years of experience' },
   { value: '2', label: 'Companies' },
   { value: '+73%', label: 'Lighthouse Score' },
   { value: '-40%', label: 'Production Bugs' },
@@ -81,7 +81,7 @@ export const experiences = [
 
 export const skills = {
   'Languages': ['JavaScript', 'TypeScript'],
-  'Frameworks': ['Vue.js 3', 'Nuxt.js 3', 'React.js'],
+  'Frameworks': ['Vue.js 3', 'Nuxt.js 3', 'React.js', 'Nest.js'],
   'State Management': ['Pinia', 'Vuex'],
   'Styling': ['TailwindCSS', 'SCSS / Sass', 'Ant Design', 'PrimeVue', 'Vuetify'],
   'Build & DevOps': ['Vite', 'Webpack', 'Docker', 'CI/CD', 'Git'],

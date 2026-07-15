@@ -1,12 +1,12 @@
 Nguyen Huu Nghia
-Middle Frontend Developer
+Senior Frontend Developer
 (+84) 859 255277
 nhn280700@gmail.com
 linkedin.com/nghia-nguyen
 Go Vap, Ho Chi Minh City  |  huunghia2807.github.io/portfolio
 ---
 PROFESSIONAL SUMMARY
-Frontend Developer with 3+ years of experience building performant web applications with Vue.js, Nuxt.js, React, and TypeScript. Improved Lighthouse scores by 73%, reduced production bugs by 40%, and optimized API usage by 60%. Strong in SSR/SSG and performance optimization. Interested in expanding into Backend and DevOps to build scalable end-to-end systems.
+Senior Frontend Developer with 4+ years of experience building performant web applications with Vue.js, Nuxt.js, React, and TypeScript. Improved Lighthouse scores by 73%, reduced production bugs by 40%, and optimized API usage by 60%. Strong in SSR/SSG and performance optimization. Interested in expanding into Backend and DevOps to build scalable end-to-end systems.
 ---
 PROFESSIONAL EXPERIENCE
 Frontend Developer - GLODIVAL     
