@@ -379,7 +379,7 @@ onMounted(() => {
   background: linear-gradient(
     180deg,
     transparent,
-    rgba(99, 102, 241, 0.03) 50%,
+    rgba(99, 254, 19, 0.04) 50%,
     transparent
   );
 }
@@ -415,7 +415,7 @@ onMounted(() => {
   width: 44px;
   height: 44px;
   border-radius: var(--radius-md);
-  background: rgba(99, 102, 241, 0.1);
+  background: rgba(99, 254, 19, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -425,7 +425,7 @@ onMounted(() => {
 }
 
 .contact-item:hover .contact-icon {
-  background: rgba(99, 102, 241, 0.2);
+  background: rgba(99, 254, 19, 0.22);
 }
 
 .contact-detail {
@@ -447,7 +447,7 @@ onMounted(() => {
 .contact-value {
   font-size: 0.88rem;
   color: var(--text-secondary);
-  font-family: "Fira Code", monospace;
+  font-family: 'Albert Sans', sans-serif;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -503,11 +503,11 @@ label {
 
 input,
 textarea {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border);
+  background: #fff;
+  border: 1px solid rgba(26, 26, 26, 0.12);
   border-radius: var(--radius-md);
   padding: 12px 16px;
-  font-family: "Inter", sans-serif;
+  font-family: 'Albert Sans', sans-serif;
   font-size: 0.9rem;
   color: var(--text-primary);
   outline: none;
@@ -527,8 +527,8 @@ textarea::placeholder {
 input:focus,
 textarea:focus {
   border-color: var(--accent);
-  background: rgba(99, 102, 241, 0.05);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(99, 254, 19, 0.25);
 }
 
 input.error,
@@ -573,13 +573,13 @@ textarea.error {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: rgba(34, 197, 94, 0.15);
-  border: 2px solid rgba(34, 197, 94, 0.4);
+  background: rgba(99, 254, 19, 0.18);
+  border: 2px solid rgba(33, 140, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  color: #22c55e;
+  color: var(--accent);
 }
 
 .form-success p {

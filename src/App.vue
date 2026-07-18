@@ -115,10 +115,10 @@ onUnmounted(() => {
   top: 0;
   left: 0;
   height: 2px;
-  background: var(--accent-gradient);
+  background: var(--accent-bright);
   z-index: 9999;
   transition: width 0.1s linear;
-  box-shadow: 0 0 10px rgba(99, 102, 241, 0.9);
+  box-shadow: 0 0 10px rgba(99, 254, 19, 0.7);
 }
 
 /* Custom cursor */
@@ -133,7 +133,7 @@ body.custom-cursor * {
   left: -4px;
   width: 8px;
   height: 8px;
-  background: #fff;
+  background: #262626;
   border-radius: 50%;
   pointer-events: none;
   z-index: 99999;
@@ -147,7 +147,7 @@ body.custom-cursor * {
   left: -18px;
   width: 36px;
   height: 36px;
-  border: 1.5px solid rgba(99, 102, 241, 0.8);
+  border: 1.5px solid rgba(33, 140, 0, 0.7);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99998;

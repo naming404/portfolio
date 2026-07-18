@@ -17,14 +17,31 @@
 
           <div class="about-edu">
             <div class="edu-icon">
-              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+              <svg
+                width="18"
+                height="18"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 14l9-5-9-5-9 5 9 5z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+                />
               </svg>
             </div>
             <div>
               <div class="edu-degree">{{ education.degree }}</div>
-              <div class="edu-meta">{{ education.school }} · {{ education.period }}</div>
+              <div class="edu-meta">
+                {{ education.school }} · {{ education.period }}
+              </div>
               <div class="edu-meta">{{ education.english }}</div>
             </div>
           </div>
@@ -40,9 +57,24 @@
           <!-- Location card -->
           <div class="location-card card">
             <div class="location-icon">
-              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              <svg
+                width="20"
+                height="20"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                />
               </svg>
             </div>
             <div>
@@ -57,37 +89,37 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { personal, stats, education } from '../data/portfolio.js'
+import { ref, onMounted } from "vue";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { personal, stats, education } from "../data/portfolio.js";
 
-const sectionRef = ref(null)
-const textRef = ref(null)
-const statsRef = ref(null)
+const sectionRef = ref(null);
+const textRef = ref(null);
+const statsRef = ref(null);
 
-const quickTags = ['Vue.js 3', 'Nuxt.js 3', 'TypeScript', 'SSR/SSG', 'Performance', 'GraphQL']
+const quickTags = ["TypeScript", "SSR/SSG", "Performance", "GraphQL"];
 
 function parseStatValue(value) {
-  const m = String(value).match(/^([+\-]?)(\d[\d,]*)(.*)$/)
-  if (!m) return { prefix: '', num: 0, suffix: value }
-  return { prefix: m[1], num: parseInt(m[2].replace(/,/g, '')), suffix: m[3] }
+  const m = String(value).match(/^([+\-]?)(\d[\d,]*)(.*)$/);
+  if (!m) return { prefix: "", num: 0, suffix: value };
+  return { prefix: m[1], num: parseInt(m[2].replace(/,/g, "")), suffix: m[3] };
 }
 
 function animateCounter(el, value) {
-  const { prefix, num, suffix } = parseStatValue(value)
-  if (num === 0) return
-  const obj = { val: 0 }
+  const { prefix, num, suffix } = parseStatValue(value);
+  if (num === 0) return;
+  const obj = { val: 0 };
   gsap.to(obj, {
     val: num,
     duration: 1.8,
-    ease: 'power2.out',
+    ease: "power2.out",
     onUpdate() {
-      const v = Math.round(obj.val)
-      el.textContent = prefix + (v >= 1000 ? v.toLocaleString() : v) + suffix
+      const v = Math.round(obj.val);
+      el.textContent = prefix + (v >= 1000 ? v.toLocaleString() : v) + suffix;
     },
-    scrollTrigger: { trigger: el, start: 'top 85%' },
-  })
+    scrollTrigger: { trigger: el, start: "top 85%" },
+  });
 }
 
 onMounted(() => {
@@ -96,19 +128,19 @@ onMounted(() => {
     opacity: 0,
     x: -50,
     duration: 1.0,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: sectionRef.value, start: 'top 75%' },
-  })
+    ease: "power3.out",
+    scrollTrigger: { trigger: sectionRef.value, start: "top 75%" },
+  });
 
   // Paragraph + tags stagger after the clip wipe
-  gsap.from(['.about-summary', '.about-tags', '.about-edu'], {
+  gsap.from([".about-summary", ".about-tags", ".about-edu"], {
     opacity: 0,
     y: 24,
     stagger: 0.15,
     duration: 0.7,
-    ease: 'power3.out',
-    scrollTrigger: { trigger: textRef.value, start: 'top 72%' },
-  })
+    ease: "power3.out",
+    scrollTrigger: { trigger: textRef.value, start: "top 72%" },
+  });
 
   // Stat cards: spring stagger
   gsap.from(statsRef.value?.children, {
@@ -117,20 +149,25 @@ onMounted(() => {
     scale: 0.85,
     stagger: 0.1,
     duration: 0.7,
-    ease: 'back.out(1.6)',
-    scrollTrigger: { trigger: statsRef.value, start: 'top 78%' },
-  })
+    ease: "back.out(1.6)",
+    scrollTrigger: { trigger: statsRef.value, start: "top 78%" },
+  });
 
   // Count-up for each stat value
-  statsRef.value?.querySelectorAll('.stat-value').forEach((el, i) => {
-    animateCounter(el, stats[i]?.value)
-  })
-})
+  statsRef.value?.querySelectorAll(".stat-value").forEach((el, i) => {
+    animateCounter(el, stats[i]?.value);
+  });
+});
 </script>
 
 <style scoped>
 .about {
-  background: linear-gradient(180deg, transparent, rgba(99, 102, 241, 0.03) 50%, transparent);
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(99, 254, 19, 0.04) 50%,
+    transparent
+  );
 }
 
 .about-grid {
@@ -174,7 +211,7 @@ onMounted(() => {
   width: 40px;
   height: 40px;
   border-radius: var(--radius-sm);
-  background: rgba(99, 102, 241, 0.12);
+  background: rgba(99, 254, 19, 0.14);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -236,7 +273,7 @@ onMounted(() => {
   width: 40px;
   height: 40px;
   border-radius: var(--radius-sm);
-  background: rgba(99, 102, 241, 0.1);
+  background: rgba(99, 254, 19, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -275,13 +312,28 @@ onMounted(() => {
     gap: 10px;
   }
 
-  .stat-card { padding: 20px 14px; }
-  .stat-value { font-size: 1.7rem; }
-  .stat-label { font-size: 0.72rem; }
+  .stat-card {
+    padding: 20px 14px;
+  }
+  .stat-value {
+    font-size: 1.7rem;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+  }
 
-  .about-summary { font-size: 0.92rem; }
+  .about-summary {
+    font-size: 0.92rem;
+  }
 
-  .about-edu { padding: 14px 16px; gap: 12px; }
-  .edu-icon { width: 34px; height: 34px; flex-shrink: 0; }
+  .about-edu {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+  .edu-icon {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+  }
 }
 </style>

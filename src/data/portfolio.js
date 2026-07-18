@@ -1,7 +1,7 @@
 export const personal = {
   name: 'Nguyen Huu Nghia',
   role: 'Senior Frontend Developer',
-  tagline: 'Crafting high-performance web experiences with Vue.js, Nuxt.js & TypeScript',
+  tagline: 'Crafting high-performance web experiences with Vue.js, Nuxt.js, React.js, Next.js, Nest.js & TypeScript',
   email: 'nhn280700@gmail.com',
   phone: '(+84) 859 255277',
   location: 'Go Vap, Ho Chi Minh City',
@@ -10,7 +10,7 @@ export const personal = {
   github2: 'https://github.com/naming404',
   portfolio: 'https://huunghia2807.github.io/portfolio',
   avatar: './personal.jpg',
-  summary: 'Senior Frontend Developer with 4+ years of experience building high-performance web applications with Vue.js, Nuxt.js, React, and TypeScript. Improved Lighthouse scores by 73%, reduced production bugs by 40%, and optimized API usage by 60%. Strong in SSR/SSG and performance optimization. Actively expanding into Backend and DevOps to build scalable end-to-end systems.',
+  summary: 'Senior Frontend Developer with 4+ years of experience building high-performance web applications with Vue.js, Nuxt.js, React.js, Next.js & TypeScript. Improved Lighthouse scores by 73%, reduced production bugs by 40%, and optimized API usage by 60%. Strong in SSR/SSG and performance optimization. Actively expanding into Backend and DevOps to build scalable end-to-end systems.',
 }
 
 export const stats = [
@@ -81,11 +81,11 @@ export const experiences = [
 
 export const skills = {
   'Languages': ['JavaScript', 'TypeScript'],
-  'Frameworks': ['Vue.js 3', 'Nuxt.js 3', 'React.js', 'Nest.js'],
-  'State Management': ['Pinia', 'Vuex'],
+  'Frameworks': ['Vue.js 3', 'Nuxt.js 3', 'React.js', 'Next.js', 'Nest.js'],
+  'State Management': ['Pinia', 'Vuex', 'Zustand'],
   'Styling': ['TailwindCSS', 'SCSS / Sass', 'Ant Design', 'PrimeVue', 'Vuetify'],
   'Build & DevOps': ['Vite', 'Webpack', 'Docker', 'CI/CD', 'Git'],
-  'Testing': ['Vitest', 'Vue Test Utils', 'Puppeteer'],
+  'Testing': [ 'Unit Testing', 'Vitest', 'Puppeteer'],
   'Concepts': ['SSR', 'SSG', 'Core Web Vitals', 'SEO', 'Responsive', 'WCAG', 'Agile/Scrum', 'Code Review'],
 }
 
@@ -94,31 +94,31 @@ export const achievements = [
     metric: '+73%',
     title: 'Lighthouse Score',
     description: 'From ~55 to ~95 — SSR migration and Core Web Vitals optimization across 2 production platforms.',
-    color: '#6366f1',
+    color: '#218c00',
   },
   {
     metric: '-40%',
     title: 'Production Bugs',
     description: 'TypeScript migration, type-safe architecture, and structured code review processes.',
-    color: '#a855f7',
+    color: '#262626',
   },
   {
     metric: '-60%',
     title: 'Redundant API Calls',
     description: 'Apollo Client caching for 15+ GraphQL queries, reducing fetch latency by ~300ms.',
-    color: '#22d3ee',
+    color: '#218c00',
   },
   {
     metric: '1,000+',
     title: 'Users Supported',
     description: 'End-to-end seat management system supporting daily internal operations.',
-    color: '#f59e0b',
+    color: '#262626',
   },
   {
     metric: '10,000+',
     title: 'Performance & SEO',
     description: 'Drove 10,000+ monthly visits through SSR migration and Core Web Vitals optimization.',
-    color: '#22c55e',
+    color: '#218c00',
   },
 ]
 

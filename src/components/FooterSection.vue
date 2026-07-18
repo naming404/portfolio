@@ -123,14 +123,11 @@ function scrollTo(selector) {
 .footer-logo {
   font-size: 1.4rem;
   font-weight: 900;
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-primary);
 }
 
 .dot {
-  -webkit-text-fill-color: transparent;
+  color: var(--accent);
 }
 
 .footer-tagline {
@@ -156,7 +153,7 @@ function scrollTo(selector) {
 
 .footer-link:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(38, 38, 38, 0.05);
 }
 
 .footer-socials {
@@ -181,7 +178,7 @@ function scrollTo(selector) {
 .social-btn:hover {
   color: var(--text-primary);
   border-color: var(--accent);
-  background: rgba(99, 102, 241, 0.1);
+  background: rgba(99, 254, 19, 0.12);
   transform: translateY(-2px);
 }
 
@@ -207,11 +204,11 @@ function scrollTo(selector) {
 .tech-pill {
   padding: 2px 10px;
   border-radius: 50px;
-  background: rgba(99, 102, 241, 0.08);
-  border: 1px solid rgba(99, 102, 241, 0.18);
+  background: rgba(99, 254, 19, 0.1);
+  border: 1px solid rgba(33, 140, 0, 0.2);
   color: var(--accent-hover);
   font-size: 0.72rem;
-  font-family: "Fira Code", monospace;
+  font-family: 'Albert Sans', sans-serif;
 }
 
 @media (max-width: 768px) {

@@ -151,7 +151,7 @@ onMounted(() => {
   background: linear-gradient(
     180deg,
     transparent,
-    rgba(168, 85, 247, 0.02) 50%,
+    rgba(99, 254, 19, 0.03) 50%,
     transparent
   );
 }
@@ -188,11 +188,11 @@ onMounted(() => {
 
 .achievement-metric {
   font-size: 2.8rem;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1;
   margin-bottom: 10px;
-  font-family: "Fira Code", monospace;
+  font-family: var(--serif);
 }
 
 .achievement-title {
@@ -263,7 +263,7 @@ onMounted(() => {
   width: 50px;
   height: 50px;
   border-radius: var(--radius-md);
-  background: rgba(99, 102, 241, 0.1);
+  background: rgba(99, 254, 19, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -273,7 +273,7 @@ onMounted(() => {
 }
 
 .project-link-card:hover .link-icon {
-  background: rgba(99, 102, 241, 0.2);
+  background: rgba(99, 254, 19, 0.22);
 }
 
 .link-arrow {
@@ -300,7 +300,7 @@ onMounted(() => {
 .link-url {
   font-size: 0.8rem;
   color: var(--text-secondary);
-  font-family: "Fira Code", monospace;
+  font-family: 'Albert Sans', sans-serif;
 }
 
 /* Responsive — tablet */

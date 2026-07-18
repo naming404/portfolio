@@ -138,7 +138,7 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
 }
 
 .navbar.scrolled {
-  background: rgba(6, 6, 18, 0.85);
+  background: rgba(250, 250, 250, 0.85);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-bottom-color: var(--border);
@@ -163,17 +163,14 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
 .logo-text {
   font-size: 1.35rem;
   font-weight: 900;
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-primary);
   letter-spacing: -0.03em;
 }
 
 .logo-dot {
   width: 6px;
   height: 6px;
-  background: var(--accent-purple);
+  background: var(--accent-bright);
   border-radius: 50%;
   margin-bottom: 14px;
 }
@@ -201,11 +198,11 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
 .nav-link:hover,
 .nav-link.active {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(38, 38, 38, 0.05);
 }
 
 .nav-link.active {
-  color: var(--accent-hover);
+  color: var(--accent);
 }
 
 /* CV button */
@@ -254,7 +251,7 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
   flex-direction: column;
   gap: 4px;
   padding: 16px 20px 24px;
-  background: rgba(6, 6, 18, 0.97);
+  background: rgba(250, 250, 250, 0.97);
   border-top: 1px solid var(--border);
   transform: translateY(-10px);
   opacity: 0;
@@ -281,7 +278,7 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
 
 .mobile-nav-link:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(38, 38, 38, 0.05);
 }
 
 /* Responsive */

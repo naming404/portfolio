@@ -140,7 +140,7 @@ onMounted(() => {
 
 <style scoped>
 .experience {
-  background: linear-gradient(180deg, transparent, rgba(168, 85, 247, 0.02) 50%, transparent);
+  background: linear-gradient(180deg, transparent, rgba(38, 38, 38, 0.025) 50%, transparent);
 }
 
 .section-header {
@@ -159,8 +159,8 @@ onMounted(() => {
   top: 8px;
   bottom: 8px;
   width: 2px;
-  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-purple) 100%);
-  opacity: 0.25;
+  background: linear-gradient(180deg, var(--accent-bright) 0%, var(--accent) 100%);
+  opacity: 0.45;
   border-radius: 2px;
 }
 
@@ -195,7 +195,7 @@ onMounted(() => {
 
 .timeline-dot.current {
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+  box-shadow: 0 0 0 4px rgba(99, 254, 19, 0.3);
 }
 
 .dot-inner {
@@ -243,9 +243,9 @@ onMounted(() => {
   border-radius: 50px;
   font-size: 0.7rem;
   font-weight: 600;
-  background: rgba(99, 102, 241, 0.15);
+  background: rgba(99, 254, 19, 0.16);
   color: var(--accent-hover);
-  border: 1px solid rgba(99, 102, 241, 0.3);
+  border: 1px solid rgba(33, 140, 0, 0.3);
 }
 
 .exp-role {
