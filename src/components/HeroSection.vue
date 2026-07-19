@@ -191,6 +191,8 @@ const avatarRef = ref(null);
 const scrollIndicatorRef = ref(null);
 
 let xTo, yTo, orbX, orbY;
+let startHeroFn = null;
+let heroFallbackTimer = null;
 const isTouch = !window.matchMedia("(hover: hover) and (pointer: fine)")
   .matches;
 
@@ -208,8 +210,19 @@ function onMouseMove(e) {
 }
 
 onMounted(() => {
-  // ── Entrance timeline ──────────────────────────────────────────
-  const tl = gsap.timeline({ defaults: { ease: "power3.out" }, delay: 0.1 });
+  // ── Entrance timeline (starts when the preloader curtain lifts) ──
+  const tl = gsap.timeline({ defaults: { ease: "power3.out" }, paused: true });
+
+  startHeroFn = () => tl.play();
+  if (window.__preloaderDone) {
+    startHeroFn();
+  } else {
+    window.addEventListener("preloader:done", startHeroFn, { once: true });
+    // Safety net: never leave the hero hidden if the event goes missing
+    heroFallbackTimer = setTimeout(() => {
+      if (tl.progress() === 0 && !tl.isActive()) tl.play();
+    }, 4000);
+  }
 
   // Greeting badge slides in from left
   tl.from(greetingRef.value, { opacity: 0, x: -40, duration: 0.7 });
@@ -387,6 +400,8 @@ onMounted(() => {
 
 onUnmounted(() => {
   if (!isTouch) window.removeEventListener("mousemove", onMouseMove);
+  if (startHeroFn) window.removeEventListener("preloader:done", startHeroFn);
+  if (heroFallbackTimer) clearTimeout(heroFallbackTimer);
 });
 </script>
 

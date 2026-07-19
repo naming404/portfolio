@@ -19,7 +19,7 @@
 
       <div class="footer-socials">
         <a
-          :href="personal.github"
+          :href="personal.github2"
           target="_blank"
           rel="noopener"
           class="social-btn"
@@ -208,7 +208,7 @@ function scrollTo(selector) {
   border: 1px solid rgba(33, 140, 0, 0.2);
   color: var(--accent-hover);
   font-size: 0.72rem;
-  font-family: 'Albert Sans', sans-serif;
+  font-family: "Albert Sans", sans-serif;
 }
 
 @media (max-width: 768px) {

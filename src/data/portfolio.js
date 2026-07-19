@@ -5,7 +5,7 @@ export const personal = {
   email: 'nhn280700@gmail.com',
   phone: '(+84) 859 255277',
   location: 'Go Vap, Ho Chi Minh City',
-  linkedin: 'https://linkedin.com/in/nghia-nguyen',
+  linkedin: 'https://www.linkedin.com/in/nghia-nguyen-a76b74261',
   github: 'https://github.com/HuuNghia2807',
   github2: 'https://github.com/naming404',
   portfolio: 'https://huunghia2807.github.io/portfolio',

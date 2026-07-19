@@ -1,5 +1,19 @@
 <template>
   <div class="app">
+    <!-- Preloader -->
+    <div v-if="loading" class="preloader" ref="preloaderRef" aria-hidden="true">
+      <div class="preloader-inner">
+        <span class="preloader-logo">NHN<span class="preloader-dot">.</span></span>
+      </div>
+      <div class="preloader-bar">
+        <span
+          class="preloader-bar-fill"
+          :style="{ transform: `scaleX(${loadProgress / 100})` }"
+        />
+      </div>
+      <span class="preloader-count">{{ loadProgress }}%</span>
+    </div>
+
     <!-- Scroll progress bar -->
     <div class="scroll-progress" :style="{ width: scrollProgress + '%' }" />
 
@@ -37,9 +51,53 @@ import FooterSection from './components/FooterSection.vue'
 const scrollProgress = ref(0)
 const cursorDot = ref(null)
 const cursorRing = ref(null)
+const loading = ref(true)
+const loadProgress = ref(0)
+const preloaderRef = ref(null)
 
 let dotX, dotY, ringX, ringY
 let isTouchDevice = false
+
+function runPreloader() {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  document.body.style.overflow = 'hidden'
+
+  // Fake-but-honest progress: minimum display time + wait for real page load
+  const obj = { v: 0 }
+  const progressDone = new Promise((resolve) => {
+    gsap.to(obj, {
+      v: 100,
+      duration: reduced ? 0.3 : 1.1,
+      ease: 'power2.inOut',
+      onUpdate: () => (loadProgress.value = Math.round(obj.v)),
+      onComplete: resolve,
+    })
+  })
+
+  const pageLoaded = new Promise((resolve) => {
+    if (document.readyState === 'complete') resolve()
+    else {
+      window.addEventListener('load', resolve, { once: true })
+      setTimeout(resolve, 2500) // safety cap — never hold the page hostage
+    }
+  })
+
+  Promise.all([progressDone, pageLoaded]).then(() => {
+    // Kick off hero entrance while the curtain is still fading — feels seamless
+    window.__preloaderDone = true
+    window.dispatchEvent(new Event('preloader:done'))
+
+    gsap.to(preloaderRef.value, {
+      autoAlpha: 0,
+      duration: reduced ? 0.2 : 0.55,
+      ease: 'power2.inOut',
+      onComplete: () => {
+        loading.value = false
+        document.body.style.overflow = ''
+      },
+    })
+  })
+}
 
 function onScroll() {
   const scrollTop = window.scrollY
@@ -74,6 +132,8 @@ function onMouseEnter() {
 }
 
 onMounted(() => {
+  runPreloader()
+
   window.addEventListener('scroll', onScroll, { passive: true })
 
   // Only activate cursor on devices that support hover (not touch)
@@ -107,6 +167,74 @@ onUnmounted(() => {
 <style>
 .app {
   min-height: 100vh;
+}
+
+/* Preloader */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+}
+
+.preloader-inner {
+  position: relative;
+  padding: 6px 10px;
+}
+
+/* Selection frame with corner handles — theme signature */
+.preloader-inner::before {
+  content: '';
+  position: absolute;
+  inset: -4px -10px;
+  border: 1.5px solid var(--accent-bright);
+  background:
+    linear-gradient(var(--accent-bright), var(--accent-bright)) top left / 8px 8px no-repeat,
+    linear-gradient(var(--accent-bright), var(--accent-bright)) top right / 8px 8px no-repeat,
+    linear-gradient(var(--accent-bright), var(--accent-bright)) bottom left / 8px 8px no-repeat,
+    linear-gradient(var(--accent-bright), var(--accent-bright)) bottom right / 8px 8px no-repeat;
+  pointer-events: none;
+}
+
+.preloader-logo {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+.preloader-dot {
+  color: var(--accent);
+}
+
+.preloader-bar {
+  width: 180px;
+  height: 2px;
+  background: var(--border-strong);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.preloader-bar-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-bright);
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+.preloader-count {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
 }
 
 /* Scroll progress */

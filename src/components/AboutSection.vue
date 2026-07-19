@@ -143,15 +143,20 @@ onMounted(() => {
   });
 
   // Stat cards: spring stagger
-  gsap.from(statsRef.value?.children, {
-    opacity: 0,
-    y: 50,
-    scale: 0.85,
-    stagger: 0.1,
-    duration: 0.7,
-    ease: "back.out(1.6)",
-    scrollTrigger: { trigger: statsRef.value, start: "top 78%" },
-  });
+  gsap.fromTo(
+    statsRef.value?.children,
+    { opacity: 0, y: 50, scale: 0.85 },
+    {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      stagger: 0.1,
+      duration: 0.7,
+      ease: "back.out(1.6)",
+      clearProps: "opacity,transform",
+      scrollTrigger: { trigger: statsRef.value, start: "top 78%", once: true },
+    }
+  );
 
   // Count-up for each stat value
   statsRef.value?.querySelectorAll(".stat-value").forEach((el, i) => {

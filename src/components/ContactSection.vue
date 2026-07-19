@@ -89,7 +89,7 @@
           </a>
 
           <a
-            :href="personal.github"
+            :href="personal.github2"
             target="_blank"
             rel="noopener"
             class="contact-item card"
@@ -108,7 +108,7 @@
             </div>
             <div class="contact-detail">
               <span class="contact-label">GitHub</span>
-              <span class="contact-value">github.com/HuuNghia2807</span>
+              <span class="contact-value">github.com/naming404</span>
             </div>
             <div class="contact-arrow">→</div>
           </a>
@@ -127,15 +127,6 @@
 
             <!-- Form -->
             <form v-else @submit.prevent="handleSubmit" novalidate>
-              <!--
-                ═══════════════════════════════════════════════════════════
-                FORMSPREE SETUP:
-                1. Go to https://formspree.io and sign up for a free account
-                2. Create a new form and copy your Form ID (looks like: xpzvXXXX)
-                3. Replace YOUR_FORM_ID below with your actual form ID:
-                   action="https://formspree.io/f/YOUR_FORM_ID"
-                ═══════════════════════════════════════════════════════════
-              -->
               <input
                 type="hidden"
                 name="_subject"
@@ -208,25 +199,11 @@
                 class="btn btn-primary submit-btn"
                 :disabled="formState === 'sending'"
               >
-                <span v-if="formState === 'sending'">
-                  <svg
-                    class="spin"
-                    width="16"
-                    height="16"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                    />
-                  </svg>
+                <span v-if="formState === 'sending'" class="btn-state">
+                  <span class="btn-spinner" />
                   Sending...
                 </span>
-                <span v-else>
+                <span v-else class="btn-state">
                   Send message
                   <svg
                     width="16"
@@ -306,25 +283,28 @@ async function handleSubmit() {
   formState.value = "sending";
 
   try {
-    // ═══════════════════════════════════════════════════════════
-    // FORMSPREE: Thay thế YOUR_FORM_ID bằng ID form của bạn
-    // Đăng ký tại: https://formspree.io
-    // ═══════════════════════════════════════════════════════════
-    const FORMSPREE_URL = "https://formspree.io/f/YOUR_FORM_ID";
+    const FORMSPREE_URL = "https://formspree.io/f/mjgnwjkw";
 
-    const res = await fetch(FORMSPREE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        name: form.name,
-        email: form.email,
-        subject: form.subject,
-        message: form.message,
+    // Keep the sending state visible for at least 650ms so the
+    // feedback reads as deliberate instead of a flicker
+    const minDelay = new Promise((r) => setTimeout(r, 650));
+
+    const [res] = await Promise.all([
+      fetch(FORMSPREE_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          subject: form.subject,
+          message: form.message,
+        }),
       }),
-    });
+      minDelay,
+    ]);
 
     if (res.ok) {
       formState.value = "success";
@@ -348,30 +328,40 @@ onMounted(() => {
     duration: 1.0,
     ease: "power3.out",
     scrollTrigger: { trigger: headerRef.value, start: "top 80%" },
-  })
+  });
 
   // Contact cards: stagger with spring + blur
-  gsap.from(infoRef.value?.children, {
-    opacity: 0,
-    x: -50,
-    filter: "blur(8px)",
-    stagger: 0.1,
-    duration: 0.75,
-    ease: "power3.out",
-    scrollTrigger: { trigger: infoRef.value, start: "top 78%" },
-  })
+  gsap.fromTo(
+    infoRef.value?.children,
+    { opacity: 0, x: -50, filter: "blur(8px)" },
+    {
+      opacity: 1,
+      x: 0,
+      filter: "blur(0px)",
+      stagger: 0.1,
+      duration: 0.75,
+      ease: "power3.out",
+      clearProps: "opacity,transform,filter",
+      scrollTrigger: { trigger: infoRef.value, start: "top 78%", once: true },
+    }
+  );
 
   // Form: scale up from slightly below + blur clear
-  gsap.from(formRef.value, {
-    opacity: 0,
-    y: 50,
-    scale: 0.95,
-    filter: "blur(10px)",
-    duration: 1.0,
-    ease: "power3.out",
-    scrollTrigger: { trigger: formRef.value, start: "top 80%" },
-  })
-})
+  gsap.fromTo(
+    formRef.value,
+    { opacity: 0, y: 50, scale: 0.95, filter: "blur(10px)" },
+    {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      filter: "blur(0px)",
+      duration: 1.0,
+      ease: "power3.out",
+      clearProps: "opacity,transform,filter",
+      scrollTrigger: { trigger: formRef.value, start: "top 80%", once: true },
+    }
+  );
+});
 </script>
 
 <style scoped>
@@ -447,7 +437,7 @@ onMounted(() => {
 .contact-value {
   font-size: 0.88rem;
   color: var(--text-secondary);
-  font-family: 'Albert Sans', sans-serif;
+  font-family: "Albert Sans", sans-serif;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -507,7 +497,7 @@ textarea {
   border: 1px solid rgba(26, 26, 26, 0.12);
   border-radius: var(--radius-md);
   padding: 12px 16px;
-  font-family: 'Albert Sans', sans-serif;
+  font-family: "Albert Sans", sans-serif;
   font-size: 0.9rem;
   color: var(--text-primary);
   outline: none;
@@ -588,8 +578,20 @@ textarea.error {
 }
 
 /* Spin animation */
-.spin {
-  animation: spin 1s linear infinite;
+.btn-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-spinner {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
 }
 
 @keyframes spin {
@@ -611,17 +613,44 @@ textarea.error {
 
 /* Responsive — mobile */
 @media (max-width: 480px) {
-  .form-card { padding: 22px 18px; }
-  .form-title { font-size: 1rem; margin-bottom: 20px; }
-  .form-row { grid-template-columns: 1fr; gap: 0; }
-  .form-group { margin-bottom: 14px; }
+  .form-card {
+    padding: 22px 18px;
+  }
+  .form-title {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .form-group {
+    margin-bottom: 14px;
+  }
 
-  input, textarea { font-size: 0.85rem; padding: 10px 14px; }
+  input,
+  textarea {
+    font-size: 0.85rem;
+    padding: 10px 14px;
+  }
 
-  .contact-item { padding: 14px 16px; gap: 12px; }
-  .contact-icon { width: 38px; height: 38px; flex-shrink: 0; }
-  .contact-value { font-size: 0.8rem; }
-  .contact-label { font-size: 0.68rem; }
-  .contact-arrow { font-size: 0.9rem; }
+  .contact-item {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+  .contact-icon {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+  }
+  .contact-value {
+    font-size: 0.8rem;
+  }
+  .contact-label {
+    font-size: 0.68rem;
+  }
+  .contact-arrow {
+    font-size: 0.9rem;
+  }
 }
 </style>
